@@ -1,0 +1,18 @@
+#!/bin/sh
+
+########################################################################
+#   Cleanup script
+#
+#   Usage:  clean [extra files]
+#
+#   This script removes a standard set of files, plus any extras
+#   named as command line arguments.
+
+RM=rm
+# shift
+${RM} -f *.lib *.o *.hex *.ERR *.err *.LST *.lst .MAP *.map *.i *.COD *.cod *.COF *.cof *.FIL *.fil $*
+for file in *.c; do
+    root=`basename ${file} .c`;
+    ${RM} -f ${root}.asm;
+done
+

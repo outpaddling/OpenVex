@@ -1,0 +1,17 @@
+
+One limitation of the VEX system is the lack of a wireless connection.
+The standard VEX hardware communicates with the PC through an RS232 serial
+port.
+
+In theory, a wireless connection to the VEX is possible using a bluetooth
+serial extender.  Some such extenders require no software, but are simply
+inserted into a DB-9 or similar serial connection, acting as a wireless
+serial extension cable.
+
+One example (which I have NOT tested) is the SENA Parani:
+
+http://www.sena.com/products/industrial_bluetooth/sd.php
+
+The capabilities of serial-bluetooth adapters varies, so be careful
+which one you buy.
+

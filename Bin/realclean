@@ -1,0 +1,5 @@
+#!/bin/sh
+
+RM=rm
+${RM} -f *.bak .*.bak *.BAK *.core
+

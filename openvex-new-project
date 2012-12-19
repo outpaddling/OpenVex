@@ -1,0 +1,15 @@
+#!/bin/sh
+
+##########################################################################
+#   Script to create a new project directory from the globally
+#   installed sources
+##########################################################################
+
+if [ $# != 1 ]; then
+    printf "usage: $0 new-folder-name\n"
+    exit 1
+fi
+
+DATADIR=/usr/local/share/openvex
+cp -Rp $DATADIR $1
+

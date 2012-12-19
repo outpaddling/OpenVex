@@ -1,0 +1,26 @@
+
+LOCALBASE  ?= ${HOME}
+
+CC      = mcc18
+AS      = mpasm
+LD      = mplink
+AR      = mplib
+DCC     = gcc
+
+CFLAGS  = -I../Lib -p=18f8520 -ms
+AFLAGS  = /q /p18f8520
+ARFLAGS = /c
+LFLAGS  = vexmcc18.lkr /l'C:\MCC18\lib' /a INHX8M
+DCFLAGS = -I../Lib -I${LOCALBASE}/.wine/drive_c/MCC18/h -D__18F8520
+
+# USE_TIMER is only for Generate_Pwms, which is not currently used
+# Do not use.  Timer0 is used by the API for sonar and must not be altered.
+# CFLAGS  += -dUSE_TIMER
+# AFLAGS  += /dUSE_TIMER
+
+FIRMWARE_OBJS    = firmware.o ifi_startup.o
+
+EXTRA_LIB_OBJS  = clear_mem.o
+
+LD_CMD  = ${LD} ${FIRMWARE_OBJS} ${LIBDIR}/${LIB} ${LFLAGS} ${LIBS} /o ${BINSTEM}
+

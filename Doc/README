@@ -1,0 +1,14 @@
+
+For detailed information on PIC programming, see the Microchip
+spec sheet 39609b.pdf.
+
+For information in the VEX architecture, this code is unfortunately the
+best documentation available.
+
+See io.h for information on how the PIC pins map to I/O and interrupt ports.
+
+The PWM ports are controlled by the master processor.  ( This code runs
+on the user processor. )  The two processors communicate over an SPI bus
+every 18.5ms.  The source code to handle this communication is all in the
+Lib directory.
+

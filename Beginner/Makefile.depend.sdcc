@@ -1,0 +1,16 @@
+crt0iz.o: crt0iz.c
+	${CC} ${CFLAGS} crt0iz.c
+firmware.o: firmware.c ../Lib/OpenVex.h ../Lib/general.h ../Lib/version.h \
+ ../Lib/platform.h ../Lib/vex_usart.h ../Lib/io.h ../Lib/timer.h \
+ ../Lib/interrupts.h ../Lib/shaft_encoder.h ../Lib/vex_spi.h \
+ ../Lib/master.h ../Lib/sonar.h ../Lib/debug.h ../Lib/init.h \
+ ../Lib/vex_delay.h ../Lib/lvd.h ../Lib/accelerometer.h \
+ ../Lib/line_sensor.h ../Lib/arcade_drive.h firmware.h
+	${CC} ${CFLAGS} firmware.c
+ifi_startup.o: ifi_startup.c ../Lib/OpenVex.h ../Lib/general.h \
+ ../Lib/version.h ../Lib/platform.h ../Lib/vex_usart.h ../Lib/io.h \
+ ../Lib/timer.h ../Lib/interrupts.h ../Lib/shaft_encoder.h \
+ ../Lib/vex_spi.h ../Lib/master.h ../Lib/sonar.h ../Lib/debug.h \
+ ../Lib/init.h ../Lib/vex_delay.h ../Lib/lvd.h ../Lib/accelerometer.h \
+ ../Lib/line_sensor.h ../Lib/arcade_drive.h
+	${CC} ${CFLAGS} ifi_startup.c
