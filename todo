@@ -1,0 +1,37 @@
+
+
+High priority
+-------------
+Continue to improve dox.
+
+Look at sequence of low-priority ISR
+    Process most likely/numerous interrupts first
+
+New 2-wire motors + 29 controllers do not respond
+    Old motor works fine on same port with same code
+    Ruled out:
+	compiler:   same problem with sdcc and mcc18
+	master code:    works with easyC and starter code
+	closed-source:  works with VexCode_unix
+    checked init_regs()
+	looks OK
+    Ideas:
+	SPI packet transmission corrupt?
+	Other communication from user to master proc?
+	    pins asserted to control PWM format?
+
+
+Low priority
+------------
+Improve accuracy of delay_msec() and delay_sec() by accounting for
+function call and loop overhead.
+
+Create an API for the secondary usart.
+
+sdcc: T0CON structure missing from pic1848520.h
+
+timer0 write operations inhibit increment for 2 cycles.  Work around
+by writing N+2.
+
+sdcc?: pic18f8520.h has TMR2ON in T4CONbits
+

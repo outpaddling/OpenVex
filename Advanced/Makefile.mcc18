@@ -1,0 +1,58 @@
+##########################################################################
+# Makefile for use with Microchip MCC18 on Intel Unix systems with Wine
+# J Bacon
+# 
+# Prerequisites
+#
+# 1. Install Wine
+# 2. wine MPLAB-C18-Student Edition-v3_16.exe (or similar)
+# 3. winecfg
+#       Add Application
+#       Browse to c:\\mcc18\bin\mcc18.exe
+#       Repeat for mplink.exe, mplib.exe, mpasmwin.exe
+#       (mpasm.exe is a DOS executable and will not work under Wine)
+#
+# Note: You should not need to edit this makefile to accomodate your
+# installation.  Simply tell it where your SDCC or MCC18 installation
+# is when you run make, e.g. for SDCC installed from MacPorts:
+#
+#   make PREFIX=/opt/local
+#
+# The default PREFIX is /usr/local.
+#
+# Take a look at Makefile.common for other settings.
+
+#########################################################################
+# Compiler-specific definitions
+
+include ../Include/Makefile.mcc18_defs
+
+#########################################################################
+# Common definitions
+
+include ../Include/Makefile.common
+
+########################################################################
+# Build targets
+
+BINSTEM = firmware
+BIN     = ${BINSTEM}.hex
+OBJS    = firmware.o ifi_startup.o
+LIBDIR  = ../Lib
+
+${BIN}: ${OBJS} ${LIBDIR}/${LIB}
+	${LD} ${OBJS} ${LIBDIR}/${LIB} ${LFLAGS} ${LIBS} /o ${BINSTEM}
+
+${LIBDIR}/${LIB}:
+	(cd ${LIBDIR}; make -f Makefile.mcc18 PREFIX=${PREFIX} DEBUG=${DEBUG})
+
+include ${MAKEFILE_DEPEND}
+
+install: ${BIN}
+	vexctl --monitor upload ${BIN}
+
+########################################################################
+# Utility targets
+
+include ../Include/Makefile.targets
+

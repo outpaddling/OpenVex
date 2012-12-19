@@ -1,0 +1,65 @@
+.TH OPENVEX 1
+.SH NAME    \" Section header
+.PP
+
+OpenVex \- Open source Vex robotics firmware
+
+\" Convention:
+\" Underline anything that is typed verbatim - commands, etc.
+.SH SYNOPSIS
+.PP
+.nf 
+.na 
+openvex-new-project new-folder-name
+.ad
+.fi
+
+\" Optional sections
+.SH "PURPOSE"
+
+OpenVex is an API (Application Program Interface) library for programming
+Vex robot controllers using SDCC or MCC18.
+
+.SH "DESCRIPTION"
+
+The API consists of functions for devices such as analog sensors, digital
+sensors, LED output devices, motors, servos, timers, etc.
+
+The goal of the library is to make programming Vex robots easier and more
+organized without sacrificing the near-optimal speed and flexibility of C.
+
+OpenVex can be used to program the Vex controller under any operating system and
+hardware that runs SDCC. This includes all major PC operating systems such
+as Mac (Intel or PowerPC), most Unix systems, and Windows (Cygwin
+recommended). You can use the editor or IDE (integrated development
+environment) of your choice and build the code with the included Makefiles.
+
+To create a new project in a directory called "name", run
+
+.nf
+.na
+openvex-new-project name
+.ad
+.fi
+
+Then go into name/Beginner or name/Advanced and modify the files to suit
+your project.
+
+.SH FILES
+.nf
+.na
+/usr/local/share/openvex/*
+.ad
+.fi
+
+.SH "SEE ALSO"
+roboctl, sdcc, gputils, cutecom
+
+.SH BUGS
+Please report bugs to the author and send patches in unified diff format.
+(man diff for more information)
+
+.SH AUTHOR
+.nf
+.na
+

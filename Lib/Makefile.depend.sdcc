@@ -1,0 +1,41 @@
+accelerometer.o: accelerometer.c timer.h io.h general.h version.h \
+ accelerometer.h
+	${CC} ${CFLAGS} accelerometer.c
+arcade_drive.o: arcade_drive.c general.h version.h arcade_drive.h
+	${CC} ${CFLAGS} arcade_drive.c
+debug.o: debug.c platform.h debug.h
+	${CC} ${CFLAGS} debug.c
+init.o: init.c ../Include/spi.h vex_usart.h general.h version.h \
+ platform.h io.h vex_spi.h master.h timer.h init.h
+	${CC} ${CFLAGS} init.c
+interrupts.o: interrupts.c platform.h shaft_encoder.h general.h version.h \
+ timer.h sonar.h interrupts.h io.h
+	${CC} ${CFLAGS} interrupts.c
+io.o: io.c platform.h general.h version.h vex_usart.h io.h
+	${CC} ${CFLAGS} io.c
+line_sensor.o: line_sensor.c io.h general.h version.h platform.h \
+ line_sensor.h
+	${CC} ${CFLAGS} line_sensor.c
+lvd.o: lvd.c platform.h lvd.h
+	${CC} ${CFLAGS} lvd.c
+master.o: master.c platform.h vex_usart.h general.h version.h io.h \
+ vex_spi.h master.h
+	${CC} ${CFLAGS} master.c
+shaft_encoder.o: shaft_encoder.c platform.h interrupts.h timer.h master.h \
+ general.h version.h shaft_encoder.h io.h debug.h
+	${CC} ${CFLAGS} shaft_encoder.c
+sonar.o: sonar.c platform.h vex_usart.h general.h version.h io.h timer.h \
+ interrupts.h debug.h sonar.h
+	${CC} ${CFLAGS} sonar.c
+timer.o: timer.c platform.h vex_usart.h general.h version.h io.h timer.h \
+ interrupts.h sonar.h
+	${CC} ${CFLAGS} timer.c
+timer_simple.o: timer_simple.c platform.h timer.h
+	${CC} ${CFLAGS} timer_simple.c
+vex_delay.o: vex_delay.c platform.h vex_delay.h general.h version.h
+	${CC} ${CFLAGS} vex_delay.c
+vex_spi.o: vex_spi.c ../Include/spi.h platform.h io.h general.h version.h \
+ vex_spi.h master.h interrupts.h
+	${CC} ${CFLAGS} vex_spi.c
+vex_usart.o: vex_usart.c platform.h vex_usart.h general.h version.h
+	${CC} ${CFLAGS} vex_usart.c

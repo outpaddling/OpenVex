@@ -1,0 +1,55 @@
+##########################################################################
+# Makefile for use with Microchip MCC18 on Intel Unix systems with Wine
+# J Bacon
+# 
+# Prerequisites
+#
+# 1. Install Wine
+# 2. wine MPLAB-C18-Student Edition-v3_16.exe (or similar)
+# 3. winecfg
+#       Add Application
+#       Browse to c:\\mcc18\bin\mcc18.exe
+#       Repeat for mplink.exe, mplib.exe, mpasmwin.exe
+#       (mpasm.exe is a DOS executable and will not work under Wine)
+#
+# Note: You should not need to edit this makefile to accomodate your
+# installation.  Simply tell it where your SDCC or MCC18 installation
+# is when you run make, e.g. for SDCC installed from MacPorts:
+#
+#   make LOCALBASE=/opt/local
+#
+# The default LOCALBASE is /usr/local.
+#
+# Take a look at Makefile.common for other settings.
+
+#########################################################################
+# Compiler-specific definitions
+
+include ../Include/Makefile.mcc18_defs
+
+#########################################################################
+# Common definitions
+
+include ../Include/Makefile.common
+
+########################################################################
+# Build targets
+
+OBJS    = init.o vex_spi.o vex_usart.o shaft_encoder.o \
+	interrupts.o master.o io.o timer_simple.o timer.o sonar.o debug.o \
+	vex_delay.o lvd.o arcade_drive.o accelerometer.o \
+	clear_mem.o
+
+${LIB}: ${OBJS}
+	${AR} ${ARFLAGS} ${LIB} ${OBJS}
+
+include ${MAKEFILE_DEPEND}
+
+clear_mem.o: clear_mem.asm
+	${AS} ${AFLAGS} clear_mem.asm /eclear_mem.err /oclear_mem.o
+
+########################################################################
+# Utility targets
+
+include ../Include/Makefile.utilities
+

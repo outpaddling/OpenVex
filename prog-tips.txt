@@ -1,0 +1,84 @@
+
+
+
+			    ***************
+			    * Conventions *
+			    ***************
+    
+    Following conventions is a good way to improve productivity,
+    especially in a team environment.  All conventions are somewhat
+    arbitrary: one convention isn't necessarily better than any other.
+    What matters is that team members agree to follow whichever convention
+    has been laid down in order to make things easier for each other.
+ 
+    The conventions I follow here are based on many years of experience
+    as a programmer and a teacher, and aim to provide as much information
+    as possible about the code at a glance. 
+ 
+    Identifier names
+    ----------------
+    Knowing whether an identifier is a local variable, global
+    variable, or macro (constant) is important for determining
+    possible side effects, scope, and longevity.  The ability to know this
+    at a glance saves programmers from the extra time and distraction
+    of having to scroll through the code or open other files looking
+    for a declaration or definition.  This can make programming much
+    more pleasant and significantly reduce debugging time.  Hence, this
+    code adheres to the following conventions for identifier names:
+  
+	Macros/constants:       ALL_UPPER_CASE
+	Global variables:       Capitalized
+	Locals and functions:   lower_case_with_underscores
+ 
+    I have not found it useful to distinguish between auto and static
+    local variables.  Functions should be kept small anyway, so the
+    definition is never far from sight.
+ 
+    Global variables make debugging a pain, and I simply don't use 
+    them in application programming.  However, they generally have more
+    utility in embedded programming, so here I only aim to minimize their
+    use.  They must be used to communicate with ISRs (interrupt service
+    routines), and have enough benefit in a few other situations to
+    warrant their use.
+ 
+    If someone tells you that you should use global variables to avoid
+    the overhead of passing arguments to functions, don't listen to them.
+    Argument passing in C results in a trivial amount of overhead,
+    and you will never see a noticeable gain in your program's overall
+    speed by using global variables.  If a function is so small that
+    calling argument passing is a significant fraction of its run time,
+    then you should think about inlining it or using a macro instead.
+    
+    In the flip side, global variables cause hidden side-effects, i.e.
+    changes to global variables within a function impact the operation
+    of other functions in ways that are not apparent when looking at 
+    a call to the function.  If a function only alters outside variables
+    through their interface (arguments and return value), then its impact
+    on other parts of the program is apparent wherever it is called.
+
+
+			    **************
+			    *  Comments  *
+			    **************
+			    
+    Comments describing a function should explain how to call the function
+    and nothing more.  This is especially important for API functions,
+    whose comments are used to generate documentation with doxygen,
+    javadoc, or similar tools.
+ 
+    Comments describing single statements or small blocks of code
+    should explain WHY the code is doing what it's doing, not just what
+    it is doing.  Comments should talk about the problem being addressed
+    by the code, and the algorithm used to solve it, not the code itself.
+ 
+    For example, this comment merely insults the reader's intelligence:
+ 
+    // Initialize usart.
+    init_usart();
+ 
+    In order to be useful, a comment needs to explain something that's
+    not obvious from the code itself, e.g. why the statement is there.
+ 
+    // Enable output to a terminal via stdio functions like printf().
+    init_usart();
+

@@ -1,0 +1,35 @@
+
+########################################################################
+# Non-build targets common to all Makefiles
+
+depend:
+	@${RM} -f ${MAKEFILE_DEPEND} 
+	@for file in *.c; do \
+		${DCC} ${DCFLAGS} -MM $${file} >> ${MAKEFILE_DEPEND}; \
+		printf "\t\$${CC} \$${CFLAGS} $${file}\n" >> ${MAKEFILE_DEPEND}; \
+	done
+	@${SED} -i'' -e "s|${LOCALBASE}|"'$${LOCALBASE}|g' ${MAKEFILE_DEPEND}
+
+clean:
+	@../Bin/clean ${BINSTEM}
+	@if [ 1${LIBDIR} != '1' ]; then \
+	    cd ${LIBDIR}; \
+	    ../Bin/clean; \
+	fi
+
+realclean:      clean
+	@../Bin/realclean ${BINSTEM}
+	@if [ 1${LIBDIR} != '1' ]; then \
+	    cd ${LIBDIR}; \
+	    ../Bin/realclean; \
+	fi
+
+dox:
+	rm -rf Doxygen
+	doxygen
+
+version:
+	@printf "#define CODE_VERSION \"%s\"\n" \
+		$$(basename $$(dirname $$(pwd))) > version.h
+
+

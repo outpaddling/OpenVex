@@ -1,0 +1,5 @@
+
+clear_mem.o: clear_mem.asm
+	${AS} ${AFLAGS} clear_mem.asm /eclear_mem.err /oclear_mem.o
+
+

@@ -1,0 +1,10 @@
+
+To install under Cygwin, just run robotize_cygwin.  It will inform you
+about any required steps that it cannot perform on its own.
+
+
+Notes
+-----
+If you add users accounts to Windows after installing Cygwin, you will
+need to rebuild the password and group databases using mkpasswd and mkgroup.
+
