@@ -110,8 +110,8 @@ char    rc_read_data(unsigned char channel)
 
 /**
  *  Return a value indicating a binary sequence on RC button 'channel'.
- *  This function allows a single button pair to trigger any number of
- *  different functions.
+ *  This function allows a single button pair to be used to trigger up to
+ *  127 different actions.
  *
  *  This function keeps a static internal value and counter.
  *  Each time this function is called, the buttons on channel are
