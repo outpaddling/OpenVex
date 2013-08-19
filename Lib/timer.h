@@ -423,11 +423,6 @@
  *  Timer 4
  */
 
-// Work around bug in pic18f8520.h
-#ifdef SDCC
-#define TMR4ON  TMR2ON
-#endif
-
 #define TIMER4_READ8(v)     ((v) = TMR4)
 #define TIMER4_READ16(v)    ((v) = TMR4, \
 	    (v) |= (Timer4_overflows & 0xff))
@@ -440,9 +435,28 @@
 
 #define TIMER4_WRITE_PR(v)  (PR4 = (v))
 
-#define TIMER4_START()  { T4CONbits.TMR4ON = 1; }
-#define TIMER4_STOP()   { T4CONbits.TMR4ON = 0; }
+/*
+ *  Pre-3.3.0 pic18f8520.h had a bug where T4CONbits contains fields named
+ *  T2* and TMR2*.  This was fixed, but we want code that will compile
+ *  under old and new compilers, so avoid using T4CONbits at all.
+ */
 
+// Workaround for T4CONbits containing improper TMR2ON field
+//#ifdef SDCC
+//#define TMR4ON  TMR2ON
+//#endif
+
+// This code is bug-independent
+// Little-endian, so third bit field in struct def is 0x04
+#define TIMER4_START()  { T4CON |= 0x04; }
+#define TIMER4_STOP()   { T4CON &= ~0x04; }
+
+// This code will work with properly defined T4CONbits.  Use it when
+// everyone is likely to be running SDCC 3.3 or later.
+//#define TIMER4_START()  { T4CONbits.TMR4ON = 1; }
+//#define TIMER4_STOP()   { T4CONbits.TMR4ON = 0; }
+
+// TBD
 //#define TIMER4_SET_WIDTH_16()   { T1CONbits.RD16 = 1; }
 //#define TIMER4_SET_WIDTH_8()    { T1CONbits.RD16 = 0; }
 
