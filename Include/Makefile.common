@@ -8,6 +8,7 @@ RM          ?= rm
 LIB         = OpenVex.lib
 DEBUG       ?= 1
 SED         ?= sed
+MAKE        ?= make
 
 MAKEFILE_DEPEND = Makefile.depend.${MCC}
 

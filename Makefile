@@ -3,27 +3,28 @@
 PREFIX?=    /usr/local
 MANPREFIX?= ${PREFIX}
 DATADIR?=   ${PREFIX}/share/openvex
+MAKE?=      make
 
-all:
-	cd Beginner && make depend && make
-	cd Advanced && make depend && make
-	cd HiBob && make depend && make
+all: depend
+	${MAKE} -C Beginner
+	${MAKE} -C Advanced
+	${MAKE} -C HiBob
 	
 clean:
-	cd Beginner && make clean
-	cd Advanced && make clean
-	cd HiBob && make clean
+	${MAKE} -C Beginner clean
+	${MAKE} -C Advanced clean
+	${MAKE} -C HiBob clean
 	rm -f .*.bak
 
 realclean:
-	cd Beginner && make realclean
-	cd Advanced && make realclean
-	cd HiBob && make realclean
+	${MAKE} -C Beginner realclean
+	${MAKE} -C Advanced realclean
+	${MAKE} -C HiBob realclean
 
 depend:
-	cd Beginner && make depend
-	cd Advanced && make depend
-	cd HiBob && make depend
+	${MAKE} -C Beginner depend
+	${MAKE} -C Advanced depend
+	${MAKE} -C HiBob depend
 
 install:
 	mkdir -p ${PREFIX}/bin ${DATADIR} ${MANPREFIX}/man/man1
