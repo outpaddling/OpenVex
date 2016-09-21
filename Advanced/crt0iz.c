@@ -28,17 +28,17 @@
  * $Id: crt0iz.c 3714 2005-04-02 13:13:53Z vrokas $
  */
 
-extern stack;
-extern stack_end;
+extern int stack;
+extern int stack_end;
 
-extern TBLPTRU;
-extern TBLPTRH;
-extern TBLPTRL;
-extern FSR0L;
-extern FSR0H;
-extern TABLAT;
-extern POSTINC0;
-extern POSTDEC0;
+extern int TBLPTRU;
+extern int TBLPTRH;
+extern int TBLPTRL;
+extern int FSR0L;
+extern int FSR0H;
+extern int TABLAT;
+extern int POSTINC0;
+extern int POSTDEC0;
 
 #if 1
 /* global variable for forcing gplink to add _cinit section */
