@@ -26,7 +26,7 @@
 void    debug_stack_paint(void)
 
 {
-    long DATA   *stack = STACK_BASE;
+    unsigned long DATA   *stack = STACK_BASE;
     int         ii;
 
     /*
