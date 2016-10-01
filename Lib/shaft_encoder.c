@@ -353,7 +353,7 @@ int     shaft_encoder_read_quad(unsigned char interrupt_port)
 status_t    shaft_tps_run(shaft_t shafts[], unsigned char count)
 
 {
-    static char             active_timers,
+    static unsigned char    active_timers,
 			    active_counters;
     static shaft_t          *sp;
     static unsigned long    start_time,

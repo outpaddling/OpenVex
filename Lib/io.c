@@ -268,7 +268,7 @@ unsigned int io_read_analog(unsigned char port)
  *  Dec 2008     J Bacon
  */
 
-char    io_read_digital(unsigned char port)
+unsigned char    io_read_digital(unsigned char port)
 
 {
     if ( ! VALID_DIGITAL_INPUT_PORT(port) )
@@ -397,7 +397,7 @@ status_t    io_set_direction(unsigned char port,io_dir_t dir)
 }
 
 
-char    io_get_direction(unsigned char port)
+unsigned char    io_get_direction(unsigned char port)
 {
     if ( ! VALID_DIGITAL_PORT(port) )
 	return OV_BAD_PARAM;

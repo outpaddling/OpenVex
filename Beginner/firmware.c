@@ -314,6 +314,9 @@ void    autonomous_routine_competition(unsigned short seconds)
      *  Run for the length of the autonomous period (usually 20 seconds).
      */
 
+    /* Dummy routine.  Replace with code running for 'seconds' seconds. */
+    delay_sec(seconds);
+    
     /* Example
     pwm_write(LEFT_FRONT_DRIVE_PORT, 80);
     pwm_write(LEFT_REAR_DRIVE_PORT, 80);

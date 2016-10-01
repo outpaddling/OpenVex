@@ -379,12 +379,12 @@ void    tank_drive_routine(void)
 void    arcade_drive_routine(void)
 
 {
-    static char rc_pos,
-		implement_pos = SERVO_CENTER;
-    static char left_drive,
-		right_drive,
-		joy_x,
-		joy_y;
+    static signed char  rc_pos,
+			implement_pos = SERVO_CENTER;
+    static signed char  left_drive,
+			right_drive,
+			joy_x,
+			joy_y;
     
     joy_x = rc_read_data(ARCADE_DRIVE_X_CHAN);
     joy_y = -rc_read_data(ARCADE_DRIVE_Y_CHAN);
@@ -439,8 +439,8 @@ void    arcade_drive_routine(void)
 void    sonar_scan(unsigned char port)
 
 {
-    static char sonar_direction = SERVO_CENTER;
-    static char add = 2;
+    static signed char sonar_direction = SERVO_CENTER;
+    static signed char add = 2;
     
     /* Servo oscillating sonar direction */
     pwm_write(port, sonar_direction);
@@ -690,6 +690,9 @@ void    autonomous_routine_competition(unsigned short seconds)
     /*
      *  Run for the length of the autonomous period (usually 20 seconds).
      */
+    
+    /* Dummy routine.  Replace with real code lasting 'seconds' seconds. */
+    delay_sec(seconds);
     
     /* Example
     pwm_write(LEFT_FRONT_DRIVE_PORT, 80);

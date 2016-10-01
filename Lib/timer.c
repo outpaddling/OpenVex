@@ -215,7 +215,7 @@ unsigned long   timer4_read32(void)
 void    timer0_init(void)
 
 {
-    static char timer0_running = 0;
+    static signed char timer0_running = 0;
     
     if ( ! timer0_running )
     {

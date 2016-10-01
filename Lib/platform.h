@@ -43,7 +43,7 @@ void InterruptHandlerHigh(void);
 #define C_LABEL(l)          l
 #define INTERRUPT
 #define NAKED_INTERRUPT
-#define FORMAT_CAST (MEM_MODEL rom char*)
+#define FORMAT_CAST (MEM_MODEL rom signed char*)
 #define DATA
 /* Make sure this matches compiler and linker script settings! */
 #define STACK_BASE          (long DATA *)0x600

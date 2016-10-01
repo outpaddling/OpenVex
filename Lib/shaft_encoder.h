@@ -73,8 +73,8 @@ typedef struct
     unsigned short  input_port:4;
 
     short           integral;
-    char            previous_error;
-    char            power;          /* PID Manipulated variable */
+    signed char     previous_error;
+    signed char     power;          /* PID Manipulated variable */
 }   shaft_t;
 
 /* shaft_encoder.c */

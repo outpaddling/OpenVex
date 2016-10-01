@@ -34,19 +34,19 @@
 #define BUTTON_FWD_THRESH       +27
 
 /* Convenience macros for motor control */
-#define MOTOR_STOP              (char)0
-#define MOTOR_FULL_FWD          (char)127
-#define MOTOR_FULL_REV          (char)-127
+#define MOTOR_STOP              (signed char)0
+#define MOTOR_FULL_FWD          (signed char)127
+#define MOTOR_FULL_REV          (signed char)-127
 
-#define SERVO_CENTER            (char)0
-#define SERVO_FULL_LEFT         (char)-127
-#define SERVO_FULL_RIGHT        (char)+127
+#define SERVO_CENTER            (signed char)0
+#define SERVO_FULL_LEFT         (signed char)-127
+#define SERVO_FULL_RIGHT        (signed char)+127
 
-#define JOY_CENTER              (char)0
-#define JOY_FULL_LEFT           (char)-127
-#define JOY_FULL_RIGHT          (char)+127
-#define JOY_FULL_DOWN           (char)-127
-#define JOY_FULL_UP             (char)+127
+#define JOY_CENTER              (signed char)0
+#define JOY_FULL_LEFT           (signed char)-127
+#define JOY_FULL_RIGHT          (signed char)+127
+#define JOY_FULL_DOWN           (signed char)-127
+#define JOY_FULL_UP             (signed char)+127
 
 /* Masks for master_set_user_command() */
 #define TX_CMD_AUTONOMOUS_MODE  0x02    /* Set this bit to begin autonomous */
@@ -77,13 +77,13 @@ typedef enum
 }   pwm_controller_t;
 
 /* master.c */
-char rc_read_status(void);
-char rc_read_data(unsigned char channel);
-char controller_in_autonomous_mode(void);
-char rc_new_data_available(void);
-unsigned char rc_button_sequence(unsigned char, unsigned char);
-char pwm_write(unsigned char port, char val);
-char pwm_read(unsigned char port);
+unsigned char rc_read_status(void);
+signed char rc_read_data(unsigned char channel);
+unsigned char controller_in_autonomous_mode(void);
+unsigned char rc_new_data_available(void);
+signed char rc_button_sequence(unsigned char, unsigned char);
+signed char pwm_write(unsigned char port, signed char val);
+signed char pwm_read(unsigned char port);
 void pwm_select_processor(unsigned char port, pwm_controller_t controller);
 void pwm_set_output_type(int pwmSpec1, int pwmSpec2, int pwmSpec3, int pwmSpec4);
 void controller_submit_data(unsigned char wait);

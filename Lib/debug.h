@@ -31,7 +31,8 @@ void debug_paint_stack_bank(void);
 void debug_stack_report(void);
 void debug_spi_buff_dump(unsigned char *);
 void debug_hex_dump(unsigned char *, unsigned int);
-void    debug_validate_range(const char *function_name, const char *arg_name, 
-			    int value, int min, int max);
+void    debug_validate_range(const signed char *function_name,
+	    const signed char *arg_name,
+	    int value, int min, int max);
 #endif
 

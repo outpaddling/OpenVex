@@ -68,7 +68,7 @@ void    usart_init(void)
  *  Dec 2008    J. Bacon
  ***************************************************************************/
 
-void _user_putc(char data)
+void _user_putc(unsigned char data)
 
 {
     while ( ! USART_READY )

@@ -60,7 +60,7 @@ unsigned char                   Pwm_disable_mask;
  *  Dec 2008     J Bacon
  */
 
-char    rc_read_status(void)
+unsigned char    rc_read_status(void)
 
 {
     return User_rxdata->rc_status_byte;
@@ -85,7 +85,7 @@ char    rc_read_status(void)
  *  Dec 2008     J Bacon
  */
 
-char    rc_read_data(unsigned char channel)
+signed char    rc_read_data(unsigned char channel)
 {
     /* RC_CHANNEL* identifiers are aliases to global PORT*bits fields */
     if ( VALID_RC_CHANNEL(channel) )
@@ -138,20 +138,20 @@ char    rc_read_data(unsigned char channel)
  *  \returns    -1 if sequence is not complete, or value of binary sequence.
  */
 
-unsigned char   rc_button_sequence(unsigned char channel, unsigned char len)
+signed char   rc_button_sequence(unsigned char channel, unsigned char len)
 
 {
     static unsigned char    count = 0,
 			    val = 0,
 			    temp,
 			    digit;
-    static char             button,
+    static signed char      button,
 			    old_button;
 
     if ( ! VALID_RC_CHANNEL(channel) )
 	return OV_BAD_PARAM;
 
-    switch ( (button = rc_read_data(channel)) )
+    switch ( button = rc_read_data(channel) )
     {
 	case    -127:
 	    digit = 0;
@@ -199,10 +199,10 @@ unsigned char   rc_button_sequence(unsigned char channel, unsigned char len)
  * History: 
  *  Dec 2008    J Bacon     Derived from Vex default code.
  *  May 2009    J Bacon     Rewrote double-buffer mechanism to eliminate
- *                          mem copy to thrid buffer.
+ *                          mem copy to third buffer.
  ***************************************************************************/
 
-char   rc_new_data_available(void)
+unsigned char   rc_new_data_available(void)
 
 {
     unsigned char   new_rc_data;
@@ -250,7 +250,7 @@ char   rc_new_data_available(void)
  *  Dec 2008     J Bacon
  */
 
-char    controller_in_autonomous_mode(void)
+unsigned char    controller_in_autonomous_mode(void)
 
 {
     return User_rxdata->rc_mode.autonomous;
@@ -482,7 +482,7 @@ void    controller_print_version(void)
  *  Dec 2008     J Bacon
  */
 
-char    pwm_write(unsigned char port,char val)
+signed char    pwm_write(unsigned char port,signed char val)
 {
     /*
      *  Master processor treats 127 as stop/center, so we add 127 to
@@ -523,7 +523,7 @@ char    pwm_write(unsigned char port,char val)
  *  Dec 2008     J Bacon
  */
 
-char    pwm_read(unsigned char port)
+signed char    pwm_read(unsigned char port)
 {
     if ( VALID_PWM_PORT(port) )
 	return User_txdata.pwm[port-1] - 127;

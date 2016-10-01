@@ -86,8 +86,9 @@
  *  June 2009   J Bacon
  ***************************************************************************/
 
-status_t    arcade_drive(char joy_x, char joy_y, char power_max,
-		    char *left_power_ptr, char *right_power_ptr)
+status_t    arcade_drive(signed char joy_x, signed char joy_y,
+		    signed char power_max,
+		    signed char *left_power_ptr, signed char *right_power_ptr)
 
 {
     int     left_power,

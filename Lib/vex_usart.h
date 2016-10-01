@@ -62,9 +62,9 @@ typedef enum
 /** @} */
 
 /* vex_usart.c */
-char usart_ready(void);
+unsigned char usart_ready(void);
 void usart_init(void);
-void _user_putc(char ch);
+void _user_putc(unsigned char ch);
 
 #endif
 
