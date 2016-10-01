@@ -26,10 +26,9 @@ depend:
 	${MAKE} -C Advanced depend
 	${MAKE} -C HiBob depend
 
-install:
+install: clean
 	mkdir -p ${PREFIX}/bin ${DATADIR} ${MANPREFIX}/man/man1
 	cp -Rp * ${DATADIR}
 	install -m 0555 openvex-new-project ${PREFIX}/bin
 	install -m 0444 Doc/openvex.man ${MANPREFIX}/man/man1/openvex.1
 	install -m 0444 Doc/openvex.man ${MANPREFIX}/man/man1/openvex-new-project.1
-
