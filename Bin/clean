@@ -10,7 +10,7 @@
 
 RM=rm
 # shift
-${RM} -f *.lib *.o *.hex *.ERR *.err *.LST *.lst .MAP *.map *.i *.COD *.cod *.COF *.cof *.FIL *.fil $*
+${RM} -f *.lib *.o *.hex *.ERR *.err *.LST *.lst .MAP *.map *.i *.COD *.cod *.COF *.cof *.FIL *.fil Makefile.depend.sdcc-e $*
 for file in *.c; do
     root=`basename ${file} .c`;
     ${RM} -f ${root}.asm;
