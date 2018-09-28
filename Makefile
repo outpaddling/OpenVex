@@ -26,6 +26,9 @@ depend:
 	${MAKE} -C Advanced depend
 	${MAKE} -C HiBob depend
 
+doc:
+	cd Lib && doxygen Doxyfile
+
 install: clean
 	mkdir -p ${PREFIX}/bin ${DATADIR} ${MANPREFIX}/man/man1
 	cp -Rp * ${DATADIR}

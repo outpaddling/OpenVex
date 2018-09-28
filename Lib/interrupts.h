@@ -51,7 +51,7 @@ extern unsigned char    Interrupt_port_in_use[];
 void interrupt_set_edge(unsigned char port, unsigned char mask);
 void interrupt_enable(unsigned char port);
 void interrupt_disable(unsigned char port);
-#ifdef SDCC
+#ifdef __SDCC
 void InterruptVectorLow(void) NAKED_INTERRUPT_VECTOR(2);
 void InterruptHandlerLow(void) INTERRUPT;
 #else

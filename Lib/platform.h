@@ -7,7 +7,7 @@
 #define DEBUG   1
 #endif
 
-#if defined(SDCC)   /* SDCC specifics */
+#if defined(__SDCC)   /* SDCC specifics */
 
 #include <pic18fregs.h>
 #include <delay.h>

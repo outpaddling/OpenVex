@@ -36,7 +36,8 @@ FIRMWARE_OBJS   = ${BINSTEM}.o crt0iz.o
 # SDCC 2.9 and later use libdev18f8520.lib
 PIC_LIB ?= libdev18f8520.lib
 
-LIBS    = ${PIC_LIB} libc18f.lib libm18f.lib libsdcc.lib libio18f8520.lib
+# LIBS    = ${PIC_LIB} libc18f.lib libm18f.lib libsdcc.lib libio18f8520.lib
+LIBS    = ${PIC_LIB}
 
 EXTRA_LIB_OBJS  =
 

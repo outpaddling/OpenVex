@@ -17,7 +17,7 @@
  *  may cause the firmware to miss input events.
  */
 
-#ifdef SDCC
+#ifdef __SDCC
 
 /*
  * History:

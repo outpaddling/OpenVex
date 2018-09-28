@@ -116,7 +116,7 @@ unsigned char   io_get_analog_port_count(void)
  *  Dec 2008    J Bacon
  ***************************************************************************/
 
-#ifdef SDCC
+#ifdef __SDCC
 void    adc_open8520(unsigned char channel)
 
 {
@@ -201,7 +201,7 @@ unsigned int io_read_analog(unsigned char port)
 {
     unsigned int    result;
     unsigned char   channel;
-#ifndef SDCC
+#ifndef __SDCC
     static unsigned char inputs[] = {
 	ADC_CH0, ADC_CH1, ADC_CH2, ADC_CH3,
 	ADC_CH4, ADC_CH5, ADC_CH6, ADC_CH7,
@@ -213,7 +213,7 @@ unsigned int io_read_analog(unsigned char port)
     if ( ! VALID_ANALOG_PORT(port) )
 	return OV_BAD_PARAM;
 
-#ifdef SDCC
+#ifdef __SDCC
     result = 0;
 
     channel = port - 1;
