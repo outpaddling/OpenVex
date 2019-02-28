@@ -24,7 +24,7 @@ AFLAGS  = -c -p pic18f8520 -Dpic18f8520
 ARFLAGS = -c
 # Add -S2: https://sourceforge.net/p/gputils/bugs/300/
 # LDFLAGS = -S2 -w -c -s vexsdcc.lkr -m -I ${LOCALBASE}/share/sdcc/lib/pic6 -I ${LOCALBASE}/share/sdcc/non-free/lib/pic16 -o
-LDFLAGS = -L${LOCALBASE}/share/sdcc/lib/small -L${LOCALBASE}/share/sdcc/non-free/lib/pic16 -o
+LDFLAGS = -L${LOCALBASE}/share/sdcc/non-free/lib/pic16 -o
 DCFLAGS = ${CFLAGS}
 
 # -DUSE_TIMER is only for Generate_Pwms, which is not currently used.
@@ -50,5 +50,5 @@ EXTRA_LIB_OBJS  =
 # gplink
 # LD_CMD  = ${LD} ${FIRMWARE_OBJS} ${LDFLAGS} ${BINSTEM} ${LIBDIR}/${LIB} ${LIBS}
 # sdcc
-LD_CMD  = ${LD} ${PICFLAGS} -Wl,"-s vexsdcc.lkr" ${FIRMWARE_OBJS} ${LDFLAGS} ${BINSTEM} ${LIBDIR}/${LIB} ${LIBS}
-
+LD_CMD  = ${LD} ${PICFLAGS} -Wl,"-s vexsdcc.lkr" ${FIRMWARE_OBJS} \
+	  ${LDFLAGS} ${BINSTEM} ${LIBDIR}/${LIB} ${LIBS}
