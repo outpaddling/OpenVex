@@ -41,7 +41,7 @@ OBJS    = firmware.o ifi_startup.o
 LIBDIR  = ../Lib
 
 ${BIN}: ${OBJS} ${LIBDIR}/${LIB}
-	${LD} ${OBJS} ${LIBDIR}/${LIB} ${LFLAGS} ${LIBS} /o ${BINSTEM}
+	${LD} ${OBJS} ${LIBDIR}/${LIB} ${LDFLAGS} ${LIBS} /o ${BINSTEM}
 
 ${LIBDIR}/${LIB}:
 	(cd ${LIBDIR}; make -f Makefile.mcc18 PREFIX=${PREFIX} DEBUG=${DEBUG})
