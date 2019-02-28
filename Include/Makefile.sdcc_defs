@@ -41,9 +41,8 @@ FIRMWARE_OBJS   = ${BINSTEM}.o crt0iz.o
 # SDCC 2.9 and later use libdev18f8520.lib
 PIC_LIB ?= libdev18f8520.lib
 
-# LIBS    = ${PIC_LIB} libc18f.lib libm18f.lib libsdcc.lib libio18f8520.lib
-# sdcc 3.7.0
-LIBS    = ${PIC_LIB}
+# sdcc 3.7.0 FreeBSD port broken: Missing all but libdev
+LIBS    = ${PIC_LIB} libc18f.lib libm18f.lib libsdcc.lib libio18f8520.lib
 
 EXTRA_LIB_OBJS  =
 
