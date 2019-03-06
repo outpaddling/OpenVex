@@ -18,7 +18,9 @@ DCC     = ${CC}
 # --optimize-df still breaks OpenVex in SDCC 3.0 and has minimal impact on size
 # --optimize-cmp has no effect SDCC 3.0
 # CFLAGS  = -c -I../Lib -I../Include -mpic16 -p18f8520 --extended --optimize-df --no-crt --obanksel=1 -DDEBUG=${DEBUG}
-PICFLAGS = -mpic16 -p18f8520 --no-crt --obanksel=1 --denable-peeps --use-non-free
+# Later SDCC
+# PICFLAGS = -mpic16 -p18f8520 --no-crt --obanksel=1 --use-non-free
+PICFLAGS = -mpic16 -p18f8520 --no-crt --obanksel=1
 CFLAGS  = -c -I../Lib -I../Include -I${LOCALBASE}/share/sdcc/non-free/include/pic16 ${PICFLAGS} -DDEBUG=${DEBUG}
 AFLAGS  = -c -p pic18f8520 -Dpic18f8520
 ARFLAGS = -c

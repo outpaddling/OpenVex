@@ -7,6 +7,9 @@
 #define DEBUG   1
 #endif
 
+// For older SDCC (2.9.0)
+#define __SDCC SDCC
+
 #if defined(__SDCC)   /* SDCC specifics */
 
 #include <pic18fregs.h>
