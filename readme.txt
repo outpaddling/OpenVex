@@ -1,11 +1,13 @@
 
+OpenVex is an alternative firmware for Vex robotics controllers. It is the only well-documented and supported free programming system for Vex robotics controllers, and the only one that doesn't require Microsoft Windows.
+
+The OpenVex firmware for Microchip PIC-based controllers can be built using either SDCC or Microchip's MCC18. SDCC (Small Device C Compiler) is a cross-platform compiler that runs on any POSIX-like system, including BSD, Cygwin, Linux, and Mac OS X (PowerPC or Intel). MCC18 is a commercial compiler from Microchip, the makers of the PIC processor used in some Vex controllers. MCC is for Windows-only, but works under wine on x86 Unix systems.
+
+Vex ARM-based controllers such as the Vex Cortex controller are not yet supported. 
 
 This goal of this project is to develop sample firmware code for VEX robots
 which is easier for students and mentors to learn and modify, and easier
 for developers to enhance and port to different compilers and applications.
-
-It is not my intention to take all the fun out of robotics programming,
-so I have no plans to develop this library to a very high level.
 
 The goal of the library is to provide easy access to the Vex hardware
 through a simple, intuitive, and descriptive API.  It also provides some
