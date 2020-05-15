@@ -26,7 +26,7 @@
 void    debug_stack_paint(void)
 
 {
-    long DATA   *stack = STACK_BASE;
+    unsigned long DATA   *stack = STACK_BASE;
     int         ii;
 
     /*
@@ -42,7 +42,7 @@ void    debug_stack_paint(void)
      *  marker, which has only a 1 in 4.2 billion chance.  A longword 
      *  measurement is accurate enough for this purpose, and very reliable.
      */
-#ifdef SDCC
+#ifdef __SDCC
     for (ii = 0; ii * sizeof(long) < FSR1L-4; ++ii)
 	stack[ii] = 0xdeadbeef;
 #else
@@ -79,7 +79,7 @@ void    debug_stack_report(void)
     int     ii,
 	    size;
 
-#ifdef SDCC
+#ifdef __SDCC
     if (stack[0] != 0xdeadbeef) {
 	printf("Stack overflowed\r\n");
 	while (1)

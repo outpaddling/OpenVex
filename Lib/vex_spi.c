@@ -45,7 +45,7 @@ volatile spi_status_t   Spi_status;
 //volatile unsigned short Spi_isr_start;
 //volatile unsigned short Spi_isr_end;
 
-#ifdef SDCC
+#ifdef __SDCC
 // Not necessary when compiling with --ivt-loc 0x800
 #pragma code InterruptVectorHigh 0x808
 #else
@@ -82,7 +82,7 @@ void InterruptVectorHigh(void) NAKED_INTERRUPT_VECTOR(1)
     _ENDASM;
 }
 
-#ifndef SDCC
+#ifndef __SDCC
 #pragma code
 #ifndef V240
 // Must at least nosave .tmpdata and MATH_DATA
@@ -188,7 +188,7 @@ void    InterruptHandlerHigh(void) INTERRUPT
 }
 
 
-#ifdef SDCC
+#ifdef __SDCC
 /*
  *  In the default code, OpenSPI() gets called with:
  *  mode_select = 5 (SPI Slave mode, clock=SCK pin, SS pin control

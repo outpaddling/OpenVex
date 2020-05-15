@@ -69,7 +69,7 @@
 
 #define VALID_ENCODER_COUNT(c)  VALID_INTERRUPT_PORT(c)
 
-typedef char    status_t;
+typedef signed char    status_t;
 
 /* Macros and manifest constants */
 #include "version.h"

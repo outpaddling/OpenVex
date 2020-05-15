@@ -189,7 +189,7 @@ void    interrupt_disable(unsigned char port)
  *  Unfortunately, #pragmas cannot be wrapped in SDCC.  The preprocessor
  *  will not do any substitutions in a #pragma line.
  */
-#ifdef SDCC
+#ifdef __SDCC
 #pragma code InterruptVectorLow 0x818
 #else
 #pragma code InterruptVectorLow=LOW_INT_VECTOR
@@ -202,7 +202,7 @@ void InterruptVectorLow(void) NAKED_INTERRUPT_VECTOR(2)
     _ENDASM;
 }
 
-#ifndef SDCC
+#ifndef __SDCC
 #pragma code
 #pragma interruptlow InterruptHandlerLow
 #endif

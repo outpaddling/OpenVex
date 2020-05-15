@@ -76,7 +76,7 @@ __T0CONbits_t *T0CONbits_ptr = 0xfd5;
 #define T0CONbits   (*T0CONbits_ptr)
 #endif
 
-#ifdef SDCC
+#ifdef __SDCC
 #define T2OUTPS0    TOUTPS0
 #define T2OUTPS1    TOUTPS1
 #define T2OUTPS2    TOUTPS2
@@ -215,7 +215,7 @@ unsigned long   timer4_read32(void)
 void    timer0_init(void)
 
 {
-    static char timer0_running = 0;
+    static signed char timer0_running = 0;
     
     if ( ! timer0_running )
     {

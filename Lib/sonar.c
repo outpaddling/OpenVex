@@ -241,7 +241,7 @@ unsigned int    sonar_read(unsigned char interrupt_port)
 
 {
     /* Multiple sonar sensors could be connected to any port. */
-    static char         waiting_for_echo[6] = {0, 0, 0, 0, 0, 0};
+    static unsigned char    waiting_for_echo[6] = {0, 0, 0, 0, 0, 0};
     static unsigned int last_distance[6] = {0, 0, 0, 0, 0, 0};    
     unsigned short      t0,
 			echo_time;

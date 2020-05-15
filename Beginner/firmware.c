@@ -68,25 +68,6 @@ void    main(void)
     /* Initialize ports, etc. for this robot configuration. */
     custom_init();
 
-    /*
-     *  If digital input port COMPETITION_JUMPER_PORT is jumpered, then
-     *  the robot should run autonomous mode for the given number of
-     *  seconds as soon as a signal is detected from the RC.
-     *
-     *  Field control should enable the RC momentarily to trigger
-     *  this code to start autonomous, disable it for the remainder
-     *  of the autonomous period, and re-enable it for teleoperated mode.
-     */
-    if ( io_read_digital(COMPETITION_JUMPER_PORT) == 0 )
-    {
-	/* Wait for RC signal */
-	printf("Waiting for RC signal to begin autonomous period...\n");
-	while ( rc_read_status() != 1 )
-	    ;
-	
-	autonomous_routine_competition(20);
-    }
-
     /* 
      *  Main loop.  Watch for the master processor to indicate
      *  that new data is available.
@@ -333,6 +314,9 @@ void    autonomous_routine_competition(unsigned short seconds)
      *  Run for the length of the autonomous period (usually 20 seconds).
      */
 
+    /* Dummy routine.  Replace with code running for 'seconds' seconds. */
+    delay_sec(seconds);
+    
     /* Example
     pwm_write(LEFT_FRONT_DRIVE_PORT, 80);
     pwm_write(LEFT_REAR_DRIVE_PORT, 80);

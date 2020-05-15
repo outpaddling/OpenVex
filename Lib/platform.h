@@ -7,7 +7,10 @@
 #define DEBUG   1
 #endif
 
-#if defined(SDCC)   /* SDCC specifics */
+// For older SDCC (2.9.0)
+#define __SDCC SDCC
+
+#if defined(__SDCC)   /* SDCC specifics */
 
 #include <pic18fregs.h>
 #include <delay.h>
@@ -43,7 +46,7 @@ void InterruptHandlerHigh(void);
 #define C_LABEL(l)          l
 #define INTERRUPT
 #define NAKED_INTERRUPT
-#define FORMAT_CAST (MEM_MODEL rom char*)
+#define FORMAT_CAST (MEM_MODEL rom signed char*)
 #define DATA
 /* Make sure this matches compiler and linker script settings! */
 #define STACK_BASE          (long DATA *)0x600

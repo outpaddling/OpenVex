@@ -203,10 +203,10 @@ typedef enum
 status_t io_set_analog_port_count(unsigned char number_of_ports);
 unsigned char io_get_analog_port_count(void);
 unsigned int io_read_analog(unsigned char port);
-char io_read_digital(unsigned char port);
+unsigned char io_read_digital(unsigned char port);
 status_t io_write_digital(unsigned char port, unsigned char val);
 status_t io_set_direction(unsigned char port, io_dir_t dir);
-char    io_get_direction(unsigned char port);
+unsigned char    io_get_direction(unsigned char port);
 void io_update_local_pwm_dir(unsigned char txPWM_MASK);
 
 #endif

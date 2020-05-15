@@ -69,25 +69,6 @@ void    main(void)
     /* Initialize ports, etc. for this robot configuration. */
     custom_init();
 
-    /*
-     *  If digital input port COMPETITION_JUMPER_PORT is jumpered, then
-     *  the robot should run autonomous mode for the given number of
-     *  seconds as soon as a signal is detected from the RC.
-     *
-     *  Field control should enable the RC momentarily to trigger
-     *  this code to start autonomous, disable it for the remainder
-     *  of the autonomous period, and re-enable it for teleoperated mode.
-     */
-    if ( io_read_digital(COMPETITION_JUMPER_PORT) == 0 )
-    {
-	/* Wait for RC signal */
-	printf("Waiting for RC signal to begin autonomous period...\n");
-	while ( rc_read_status() != 1 )
-	    ;
-	
-	autonomous_routine_competition(20);
-    }
-
     /* 
      *  Main loop.  Watch for the master processor to indicate
      *  that new data is available.
@@ -398,12 +379,12 @@ void    tank_drive_routine(void)
 void    arcade_drive_routine(void)
 
 {
-    static char rc_pos,
-		implement_pos = SERVO_CENTER;
-    static char left_drive,
-		right_drive,
-		joy_x,
-		joy_y;
+    static signed char  rc_pos,
+			implement_pos = SERVO_CENTER;
+    static signed char  left_drive,
+			right_drive,
+			joy_x,
+			joy_y;
     
     joy_x = rc_read_data(ARCADE_DRIVE_X_CHAN);
     joy_y = -rc_read_data(ARCADE_DRIVE_Y_CHAN);
@@ -458,8 +439,8 @@ void    arcade_drive_routine(void)
 void    sonar_scan(unsigned char port)
 
 {
-    static char sonar_direction = SERVO_CENTER;
-    static char add = 2;
+    static signed char sonar_direction = SERVO_CENTER;
+    static signed char add = 2;
     
     /* Servo oscillating sonar direction */
     pwm_write(port, sonar_direction);
@@ -709,6 +690,9 @@ void    autonomous_routine_competition(unsigned short seconds)
     /*
      *  Run for the length of the autonomous period (usually 20 seconds).
      */
+    
+    /* Dummy routine.  Replace with real code lasting 'seconds' seconds. */
+    delay_sec(seconds);
     
     /* Example
     pwm_write(LEFT_FRONT_DRIVE_PORT, 80);
