@@ -42,7 +42,6 @@ SDCC has the following advantages:
 4.  Compiler returns success/failure status, so rational build/install
     systems can be created.
 
-============
 Installation
 ============
 To use OpenVex, you will need the following:
@@ -63,7 +62,6 @@ To use OpenVex, you will need the following:
     Unix/Mac: I recommend cutecom, but you can also use PuTTY, or
 	      any other terminal emulator with serial port support.
 
-==================================
 Compiling with SDCC on Unix or Mac
 ==================================
 
@@ -79,8 +77,6 @@ Just build:             make
 Build and upload:       make install
 Clean:                  make clean
 
-
-===========================================
 Compiling with MCC18 on Unix or Mac systems
 ===========================================
 
@@ -90,7 +86,6 @@ You will need:
    Unix-like operating system on an Intel or AMD processor.)
 2. Wine
 3. The mcc18_wrapper scripts installed in your PATH.
-
 
 Building with MCC18
 ===================
@@ -105,8 +100,6 @@ Just build:             make -f Makefile.mcc18
 Build and upload:       make -f Makefile.mcc18 install
 Clean:                  make clean
 
-
-=============================
 Compiling with MCC18 in MPLAB
 =============================
 
@@ -116,8 +109,6 @@ uses absolute paths for many things, so if you move the OpenVex folder
 you may need to edit the project settings.  The sample project files
 assume were built inside z:\OpenVex.
 
-
-=========================
 Starting your own project
 =========================
 
@@ -128,8 +119,6 @@ To start your own project:
 3. Edit firmware.c
 4. Run make
 
-
-===========
 Programming
 ===========
 
@@ -137,8 +126,6 @@ You can use the vexctl command (part of the roboctl suite) to upload
 the .hex file to your robot.  The roboctl suite is available as a FreeBSD
 port and a MacPort, and is also tested on Xubuntu and Gentoo Linux.
 
-
-=========
 Exercises
 =========
 
