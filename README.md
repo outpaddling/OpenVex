@@ -1,3 +1,5 @@
+OpenVex
+=======
 
 OpenVex is an alternative firmware for Vex robotics controllers. It is the only well-documented and supported free programming system for Vex robotics controllers, and the only one that doesn't require Microsoft Windows.
 
@@ -40,18 +42,6 @@ SDCC has the following advantages:
 4.  Compiler returns success/failure status, so rational build/install
     systems can be created.
 
-The only advantage I've found to MCC18 is that it emits much tighter
-machine code.  The SDCC PIC16 port is very new, and the code generator
-is still pretty simple.  The sample_code.hex produced by SDCC is about 19k
-while the MCC18 output is about 11k.  
-
-This is probably not an issue for most programs, since most of the code
-size is in the OpenVex library. The Vex has 30k of total program memory,
-and it would be quite a feat to fill the remaining 11k with OpenVex API
-function calls and robot logic.  It's also possible that by the time you
-read this, the SDCC code generator and optimizer will be greatly improved.
-
-
 ============
 Installation
 ============
@@ -66,28 +56,12 @@ To use OpenVex, you will need the following:
     Windows:
 	IFI Loader
     Unix/Mac/Windows (Cygwin):
-	vexctl (part of the roboctl project) 
+	vexctl (part of the roboctl project on this site)
 
 4. A terminal emulator
     Windows: IFI Loader include a terminal app, or you can use PuTTY.
     Unix/Mac: I recommend cutecom, but you can also use PuTTY, or
 	      any other terminal emulator with serial port support.
-
-For best results, FreeBSD and Mac users should install SDCC and roboctl
-via FreeBSD ports (http://freebsd.org/ports) and MacPorts
-(http://macports.org).
-
-The robotize_* scripts will assist you in setting up various systems.
-
-Other *nix users may find SDCC and roboctl in their operating system's
-package collection.
-
-If not, roboctl can be installed manually after downloading from
-http://personalpages.tds.net/~jwbacon/Ports/distfiles/.
-
-SDCC can be installed manually via the instructions at
-http://sdcc.sourceforge.net/.
-
 
 ==================================
 Compiling with SDCC on Unix or Mac
@@ -116,13 +90,6 @@ You will need:
    Unix-like operating system on an Intel or AMD processor.)
 2. Wine
 3. The mcc18_wrapper scripts installed in your PATH.
-
-On FreeBSD or Mac, install the lang/mcc18_wrapper port from jb_ports.
-(See http://personalpages.tds.net/~jwbacon/Ports/)
-
-For other Unix systems, the distfile for mcc18_wrapper can be obtained
-from http://personalpages.tds.net/~jwbacon/Ports/distfiles, and you
-can install the wrapper scripts manually.  ( e.g. into ~/bin )
 
 
 Building with MCC18
@@ -156,12 +123,10 @@ Starting your own project
 
 To start your own project:
 
-1. Make a copy of the Sample directory:
-
-cp -R Sample New_project
-
-2. Rename sample_code.c and sample_code.h
-3. Edit the Makefile to match
+1. openvex-new-project project-name
+2. cd project-name/Beginner
+3. Edit firmware.c
+4. Run make
 
 
 ===========
@@ -182,4 +147,3 @@ to help you learn the basics of motor control and sensor input.  You will
 need an open standards compliant word processor to read the file.  There
 are several FREE programs available for this, such as OpenOffice, Abiword,
 KDE Office, and GnomeOffice.
-
